@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logoutUser } from 'redux/modules/auth';
 import {
-  Menu,
-  MenuItem,
-  MenuDivider,
-  Popover,
-  PopoverInteractionKind,
-  Position,
   Navbar,
   Alignment,
   Button
@@ -18,18 +10,10 @@ import styles from './Header.scss';
 
 class Header extends Component {
   static propTypes = {
-    title: PropTypes.string,
-    logoutUser: PropTypes.func.isRequired
+    title: PropTypes.string
   }
   render() {
-    const { title = 'React Application', logoutUser } = this.props;
-    let settingsMenu = (
-      <Menu>
-        <MenuItem text="Settings..." icon="cog" />
-        <MenuDivider />
-        <MenuItem onClick={logoutUser} text="Log Out" icon="log-out" />
-      </Menu>
-        );
+    const { title = 'Marvel Hero Search' } = this.props;
 
     return (
       <Navbar className="bp3-dark">
@@ -39,17 +23,6 @@ class Header extends Component {
         <Navbar.Group align={Alignment.RIGHT}>
           <Link to="/" className={styles.headerLink}><Button className="bp3-minimal" icon="dashboard" text="Dashboard"/></Link>
           <Link to="/users" className={styles.headerLink}><Button className="bp3-minimal" icon="user" text="Users"/></Link>
-          <Navbar.Divider />
-          <Button className="bp3-minimal" icon="notifications" />
-          <Popover
-                  content={settingsMenu}
-                  interactionKind={PopoverInteractionKind.CLICK}
-                  position={Position.BOTTOM_RIGHT}
-                  useSmartArrowPositioning
-                  inheritDarkTheme={false}
-                >
-            <Button className="bp3-minimal" icon="cog" />
-          </Popover>
         </Navbar.Group>
       </Navbar>
     );
@@ -57,4 +30,4 @@ class Header extends Component {
 }
 
 
-export default connect(null, { logoutUser })(Header);
+export default Header;

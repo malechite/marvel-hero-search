@@ -10,7 +10,7 @@ const createStore = (initialState) => {
   const store = create(reducer);
 
   if (module.hot) {
-        // Enable Webpack hot module replacement for reducers
+    // Enable Webpack hot module replacement for reducers
     module.hot.accept('./modules/reducer', () => {
       store.replaceReducer(require('./modules/reducer').default);
     });
