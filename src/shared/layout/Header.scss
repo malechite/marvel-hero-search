@@ -1,7 +1,18 @@
-a.headerLink {
-  color:rgb(245, 248, 250);
+.header {
+  background-image:url('Img/rm.jpg');
+  background-size:cover;
+  background-position: 50% 20%;
+  height:400px;
 }
 
-a.headerLink:hover {
-  text-decoration: none;
+@media screen and (max-width: 992px) {
+  .header {
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    height: 200px;
+  }
 }

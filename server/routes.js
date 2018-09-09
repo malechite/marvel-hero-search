@@ -1,25 +1,25 @@
-var serveStatic = require('serve-static');
-var path = require('path');
-var marvel = require('./marvel');
+const serveStatic = require('serve-static');
+const path = require('path');
+const rickAndMorty = require('./rickAndMorty');
 
-var appRouter = (app) => {
-  var sendJSON = function(res, payload) {
+const appRouter = (app) => {
+  const sendJSON = function(res, payload) {
     res.setHeader('Content-Type', 'application/json');
     res.send(payload);
   };
 
   app.use(serveStatic(path.join(__dirname, '/../dist/')));
 
-  app.post('/api/heroes', (req, res) => {
-    var searchTerm = req.body.searchTerm;
-    marvel(searchTerm, function(heroes) {
-      if (heroes) {
-        sendJSON(res, {'status':'success', 'heroes':heroes});
+  app.post('/api/characters', (req, res) => {
+    (async() => {
+      let characters = await rickAndMorty.getCharacters();
+      if (characters) {
+        sendJSON(res, {'status':'success', 'characters':characters});
       } else {
         res.status(500);
         sendJSON(res, {'status':'error', 'message':'Could not complete request!'});
       }
-    });
+    })();
   });
 
   app.get('*', (req, res) => {

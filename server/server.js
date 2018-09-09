@@ -1,8 +1,8 @@
 /*eslint no-console: 0 */
-var express = require('express');
-var bodyParser = require('body-parser');
-var app = express();
-var port = 3000;
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const port = 3000;
 
 if (process.env.NODE_ENV !== 'production') {
   app.use(function(req, res, next) {
@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 require('./routes.js')(app);
 
-var server = app.listen(port, function() {
+const server = app.listen(port, function() {
   console.log('Listening on port %s...', server.address().port);
 });
 

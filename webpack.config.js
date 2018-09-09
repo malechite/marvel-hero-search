@@ -21,6 +21,7 @@ module.exports = {
       Utilities: path.resolve(__dirname, 'src/shared/utilities'),
       Static: path.resolve(__dirname, 'static'),
       Redux: path.resolve(__dirname, 'src/redux'),
+      Img: path.resolve(__dirname, 'src/img'),
       config$: path.resolve(__dirname, 'config.js')
     }
   },

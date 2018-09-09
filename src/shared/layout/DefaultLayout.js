@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Header from './Header';
-import Footer from './Footer';
 
 const DefaultLayout = (props) => {
   const { children } = props;
@@ -12,7 +11,6 @@ const DefaultLayout = (props) => {
       <div>
         {children}
       </div>
-      <Footer>© {new Date().getFullYear()}</Footer>
     </div>
   );
 };

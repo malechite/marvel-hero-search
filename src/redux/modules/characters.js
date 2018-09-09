@@ -1,18 +1,20 @@
 import { CALL_API } from 'redux/middleware/api';
+import { filterCharacters } from 'Utilities/filterCharacters';
 
 //User Actions
-const ADD = 'marvelherosearch/heroes/ADD';
-const DELETE = 'marvelherosearch//heroes/DELETE';
-const EDIT = 'marvelherosearch/heroes/EDIT';
-const SEARCH_REQUEST = 'marvelherosearch/heroes/SEARCH_REQUEST';
-const SEARCH_RESPONSE = 'marvelherosearch/heroes/SEARCH_RESPONSE';
-const SEARCH_FAILURE = 'marvelherosearch/heroes/SEARCH_FAILURE';
-const UPDATE_SEARCH_TERM = 'marvelherosearch/heroes/UPDATE_SEARCH_TERM';
+const ADD = 'marvelherosearch/characters/ADD';
+const DELETE = 'marvelherosearch/characters/DELETE';
+const EDIT = 'marvelherosearch/characters/EDIT';
+const SEARCH_REQUEST = 'marvelherosearch/characters/SEARCH_REQUEST';
+const SEARCH_RESPONSE = 'marvelherosearch/characters/SEARCH_RESPONSE';
+const SEARCH_FAILURE = 'marvelherosearch/characters/SEARCH_FAILURE';
+const UPDATE_SEARCH_TERM = 'marvelherosearch/characters/UPDATE_SEARCH_TERM';
 
 //Initial State
 const initialState = {
   loading: false,
   list: [],
+  filteredList: [],
   searchTerm: ''
 };
 
@@ -29,13 +31,15 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loading:false,
-        list: action.response.heroes.results
+        list: action.response.characters,
+        filteredList: action.response.characters
       };
     }
     case UPDATE_SEARCH_TERM:
       return {
         ...state,
-        searchTerm:action.searchTerm
+        searchTerm:action.searchTerm,
+        filteredList: filterCharacters(state.list, action.searchTerm)
       };
     default:
       return state;
@@ -52,36 +56,34 @@ export function updateSearchTerm(string) {
   };
 }
 
-export const addHero = (user) => {
+export const addCharacter = (character) => {
   return {
     type: ADD,
-    user
+    character
   };
 };
 
-export const deleteHero = (user) => {
+export const deleteCharacter = (character) => {
   return {
     type: DELETE,
-    user
+    character
   };
 };
 
-export const editHero = (user) => {
+export const editCharacter = (character) => {
   return {
     type: EDIT,
-    user
+    character
   };
 };
 
 //Async actions
-export const getHeroes = (searchTerm) => {
+export const getCharacters = () => {
   return {
     [CALL_API]: {
       type: 'POST',
-      endpoint: 'heroes',
-      options: {
-        searchTerm
-      },
+      endpoint: 'characters',
+      options: {},
       actions: {
         request: SEARCH_REQUEST,
         success: SEARCH_RESPONSE,

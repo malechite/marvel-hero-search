@@ -5,8 +5,8 @@ import Loadable from 'react-loadable';
 import DefaultLayout from 'shared/layout/DefaultLayout';
 import LargeSpinner from 'shared/loading/LargeSpinner';
 
-const Heroes = Loadable({
-  loader: () => import('containers/Heroes/Heroes'),
+const CharacterList = Loadable({
+  loader: () => import('containers/Characters/CharacterList'),
   loading: LargeSpinner
 });
 
@@ -16,7 +16,7 @@ class Routes extends Component {
       <Router>
         <DefaultLayout>
           <Switch>
-            <Route exact path="/" component={Heroes} />
+            <Route exact path="/" component={CharacterList} />
             <Redirect from="*" to="/" />
           </Switch>
         </DefaultLayout>
