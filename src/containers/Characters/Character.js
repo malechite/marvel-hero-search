@@ -7,13 +7,14 @@ import Avatar from './Avatar.js';
 
 export default class Character extends Component {
   render() {
-    const { name, status, image } = this.props.hero;
+    const { name, species, image } = this.props.hero;
     return (
       <Col xs={12} sm={6} md={4} lg={3} xl={2} className={styles.col}>
         <Card elevation={Elevation.ONE}>
           <Avatar url={image} />
           <h5 className="bp3-heading">{name}</h5>
-          <p>{status}</p>
+          <p>Species: {species}</p>
+
         </Card>
       </Col>
     );

@@ -1,63 +1,18 @@
-[![npm][npm]][npm-url]
-[![node][node]][node-url]
-[![deps][deps]][deps-url]
+# rick-morty-character-search
 
-# react-app-scaffolding
-
-This scaffolding is to help lay the foundatation for large scalable front end applications, using:
-* React
-* Redux
-  * Duck Pattern
-* Webpack
-  * Path resolution
-  * Code-splitting
-  * Hot Module Reloading (Dev server)
-* BlueprintJS (UI Component Library)
-* SASS Modules
-* JWT Middleware
-* AWS
-  * S3
-
-The idea is to clone the repo, and get started on development right away, with room to grow your application the right way without having to refactor or reorganize your file structure down the road.
+A simple Rick and Morty character search powered by the [https://rickandmortyapi.com/](Rick and Morty API), and built using my [https://github.com/malechite/react-app-scaffolding](react-app-scaffolding) repository as a starting point.
 
 ## Development Setup
 
-1. First clone the repository: `git@github.com:malechite/react-app-scaffolding.git`
-2. Change directories: `cd react-app-scaffolding`
+1. First clone the repository: `git@github.com:malechite/rick-morty-character-search.git`
+2. Change directories: `cd rick-morty-character-search`
 3. Install Dependencies: `yarn install`
-4. Start the dev server: `yarn start`
-5. go to [http://localhost:8080/](http://localhost:8080/) in your browser
+4. Start the API server: `yarn api`
+5. In another terminal window, start the dev server: `yarn start`
+6. [http://localhost:8080/](http://localhost:8080/) should automatically in your browser
+
+Note: During development, we run the webpack dev server using `yarn start` for hot reloading, and the API is running separately through Express. For production you would just run `yarn prod` which runs a build, and then Express serves the production files from the `dist` folder, as well as the API.
 
 ## Building
 
-To build react-app-scaffolding run `yarn build` - This will empty the `/dist` folder and webpack will build new artifacts.
-
-## Deploying
-
-You can deploy to S3 from the command line:
-
-1. Copy `bin/config.example.js` to `bin/config.js`
-2. Update the `bin/config.js` file with your AWS credentials. (AWS credentials are used to deploy to S3 only, and aren't required for development)
-
-- `yarn deploy-dev` deploys to the bucket set for `development`
-- `yarn deploy-qa` depploys to `staging`
-- `yarn deploy-prod` deploys to `production`
-
-## Dependencies
-
-react-app-scaffolding uses the following libraries and dependencies:
-
-- [Yarn](https://yarnpkg.com/en/)
-- [React](https://facebook.github.io/react/docs/hello-world.html)
-- [React Router 4](https://reacttraining.com/react-router/web/guides/quick-start)
-- [Redux](http://redux.js.org/)
-- [Webpack 2](https://webpack.js.org/configuration/)
-
-[npm]: https://img.shields.io/npm/v/style-loader.svg
-[npm-url]: https://npmjs.com/package/style-loader
-
-[node]: https://img.shields.io/node/v/style-loader.svg
-[node-url]: https://nodejs.org
-
-[deps]: https://david-dm.org/webpack/style-loader.svg
-[deps-url]: https://david-dm.org/webpack/file-loader
+To build rick-morty-character-search run `yarn build` - This will empty the `/dist` folder and webpack will build new artifacts.
