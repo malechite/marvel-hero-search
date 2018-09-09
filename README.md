@@ -1,6 +1,6 @@
 # rick-morty-character-search
 
-A simple Rick and Morty character search powered by the [https://rickandmortyapi.com/](Rick and Morty API), and built using my [https://github.com/malechite/react-app-scaffolding](react-app-scaffolding) repository as a starting point.
+A simple Rick and Morty character search powered by the [Rick and Morty API](https://rickandmortyapi.com/), and built using my [react-app-scaffolding](https://github.com/malechite/react-app-scaffolding) repository as a starting point.
 
 ## Development Setup
 
