@@ -7,7 +7,7 @@ const Placement = styled.div`
     justify-content: center;
     align-items: center;
     width: auto;
-    height: 100%;
+    height:300px;
 `;
 
 export default class LargeSpinner extends Component {
