@@ -1,5 +1,6 @@
 import { CALL_API } from 'redux/middleware/api';
 import { filterCharacters } from 'Utilities/filterCharacters';
+import { sortCharacters } from 'Utilities/sortCharacters';
 
 //User Actions
 const ADD = 'marvelherosearch/characters/ADD';
@@ -31,7 +32,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loading:false,
-        list: action.response.characters,
+        list: sortCharacters(action.response.characters),
         filteredList: action.response.characters
       };
     }
